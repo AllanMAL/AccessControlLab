@@ -4,16 +4,18 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-import java.rmi.server.UnicastRemoteObject;
 
 public class PrintClient{
+    static Printerface printer;
+
     public static void main(String[] args) throws RemoteException, NotBoundException, MalformedURLException {
-        Printerface print = (Printerface) Naming.lookup("rmi://localhost:6969/print");
-        System.out.println("-- " + print.Echo("Hey Server"));
+        printer = (Printerface) Naming.lookup("rmi://localhost:6969/printer");
+        System.out.println("-- " + printer.echo("Hey Server"));
+        print();
     }
 
-    public void print(String filename, String printer) throws RemoteException{
-
+    public static void print() throws RemoteException{
+        printer.print("text.pdf","lab-001");
     }
 
     public void queue() throws RemoteException{

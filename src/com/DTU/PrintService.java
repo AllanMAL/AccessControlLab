@@ -10,7 +10,7 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
     }
 
     @Override
-    public String Echo(String input) {
+    public String echo(String input) {
         return "from server " + input;
     }
 
