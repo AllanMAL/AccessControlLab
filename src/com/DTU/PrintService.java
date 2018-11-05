@@ -23,7 +23,7 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
     @Override
     public String queue() {
 
-        return null;
+        return "0 jobs in queue";
     }
 
     @Override
