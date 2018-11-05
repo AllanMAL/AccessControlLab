@@ -10,4 +10,9 @@ public class PrintClient {
         Printerface print = (Printerface) Naming.lookup("rmi://localhost:6969/print");
         System.out.println("-- " + print.Echo("Hey Server"));
     }
+
+    public void print() throws RemoteException{
+
+    }
+    
 }
