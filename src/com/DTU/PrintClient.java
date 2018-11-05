@@ -14,5 +14,36 @@ public class PrintClient {
     public void print() throws RemoteException{
 
     }
-    
+
+    public void queue() throws RemoteException{
+
+    }
+
+    public void topQueue(int job) throws RemoteException{
+
+    }
+
+    public void start() throws RemoteException{
+
+    }
+
+    public void stop() throws RemoteException{
+
+    }
+
+    public void restart() throws RemoteException{
+
+    }
+
+    public void status() throws RemoteException{
+
+    }
+
+    public void readConfig(String parameter) throws RemoteException{
+
+    }
+
+    public void setConfig(String parameter, String value) throws RemoteException{
+
+    }
 }
