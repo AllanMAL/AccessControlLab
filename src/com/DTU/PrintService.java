@@ -22,49 +22,49 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
 
     @Override
     public String queue() {
-
-        return "0 jobs in queue";
+        System.out.println("Get queued");
+        return "0 jobs in queued";
     }
 
     @Override
     public String topQueue(int job) {
 
-        return null;
+        System.out.println("Priorities changed!");
+        return "Job "+job+" moved to top of queued";
     }
 
     @Override
-    public boolean start() {
-
-        return false;
+    public String start() {
+        System.out.println("Server start");
+        return "Starting print server";
     }
 
     @Override
-    public boolean stop() {
-
-        return false;
+    public String stop() {
+        System.out.println("Server stop");
+        return "Stopping print server";
     }
 
     @Override
-    public boolean restart() {
-
-        return false;
-    }
+    public String restart() {
+        System.out.println("Server restart");
+        return "Restarting print server";    }
 
     @Override
     public String status() {
-
-        return null;
+        System.out.println("Status request");
+        return "'s all good.";
     }
 
     @Override
     public String readConfig(String parameter) {
-
+        System.out.println("Config get");
         return parameter;
     }
 
     @Override
     public String setConfig(String parameter, String value) {
-
+        System.out.println("Config set");
         return parameter;
     }
 }
