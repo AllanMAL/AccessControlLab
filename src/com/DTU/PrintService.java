@@ -16,6 +16,7 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
 
     @Override
     public void print(String filename, String printer) {
+        System.out.println("Print requested. Filename: "+filename+" -- Printer: "+printer);
 
     }
 
