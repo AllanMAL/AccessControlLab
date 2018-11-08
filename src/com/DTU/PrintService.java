@@ -1,15 +1,47 @@
 package com.DTU;
+
+import org.json.simple.JSONObject;
+import javax.rmi.ssl.SslRMIClientSocketFactory;
+import javax.rmi.ssl.SslRMIServerSocketFactory;
+import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
+import static java.rmi.Naming.bind;
+
 public class PrintService extends UnicastRemoteObject implements Printerface {
+
+    /* Global variables: */
     private boolean accessDenied = true;
-    private String name = "Dia",pass = "Beetus";
+    JSONObject userList = new JSONObject();
+    private static final int PORT = 6969;
+
+    public static void main(String[] args) throws RemoteException, AlreadyBoundException {
+
+        Registry registry = LocateRegistry.createRegistry(6969);
+        registry.bind("Printers", new PrintService());
+//        Registry registry = LocateRegistry.createRegistry(PORT,
+//                new SslRMIClientSocketFactory(),
+//                new SslRMIServerSocketFactory());
+//        try {
+//            registry.bind("Printers", new PrintService());
+//        } catch (AlreadyBoundException e) {
+//            e.printStackTrace();
+//        }
+    }
+
 
 
 
     PrintService() throws RemoteException {
-        super();
+
+        super(/*PORT,new SslRMIClientSocketFactory(),new SslRMIServerSocketFactory()*/);
+
+        userList.put("Gammelsmoelf","hashedPass");
+        userList.put("Gandalf","hashedPass");
+        userList.put("Hackerman101","f119caf16702d1bac8620e9becb42dcbb98170810ab1ee02edfe29b81cb2d34ec4713446cdce165dc1c2240e97f086dee80e34588f78084beccdab53230a41b7");
     }
 
     @Override
@@ -100,16 +132,27 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
     }
 
     @Override
-    public String login(String username, String password) {
+    public String login(JSONObject ident) {
         if(accessDenied) {
-            if(username.equals(name) && password.equals(pass)) {
-                System.out.println("User "+username+" logged in");
+            if(userList.containsKey(ident.get(1)) && userList.get(ident.get(1)).equals(ident.get(2))) {
+                System.out.println("User "+ident.get(1)+" logged in");
                 accessDenied = false;
-                return "true";
+                return "Login succesful. \n"+
+                        "The following options are now available: \n" +
+                        "print(String filename, String printer)\\n\" +\n" +
+                        "queue()\\n\" +\n" +
+                        "topQueue(int job)\\n\" +\n" +
+                        "start()\\n\" +\n" +
+                        "stop()\\n\" +\n" +
+                        "restart()\\n\" +\n" +
+                        "status()\\n\" +\n" +
+                        "readConfig(String parameter)\\n\" +\n" +
+                        "setConfig(String parameter, String value)\"";
             }
             return "Username or password incorrect";
         } else{
             return "You are already logged in!";
         }
     }
+
 }

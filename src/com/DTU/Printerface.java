@@ -1,9 +1,12 @@
 package com.DTU;
 
+import org.json.simple.JSONObject;
+
+import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
-public interface Printerface extends Remote {
+public interface Printerface extends Remote,Serializable {
     String echo(String input) throws RemoteException;
     void print(String filename, String printer)throws RemoteException;   // prints file filename on the specified printer
     String queue()throws RemoteException;   // lists the printer queued on the user's display in lines of the form <job number>   <file name>
@@ -14,5 +17,5 @@ public interface Printerface extends Remote {
     String status()throws RemoteException;  // prints status of printer on the user's display
     String readConfig(String parameter)throws RemoteException;   // prints the value of the parameter on the user's display
     String setConfig(String parameter, String value)throws RemoteException;   // sets the parameter to value
-    String login(String username,String password) throws RemoteException;
+    String login(JSONObject ident) throws RemoteException;
 }
