@@ -18,30 +18,44 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
     JSONObject userList = new JSONObject();
     private static final int PORT = 6969;
 
+    /* psvm */
     public static void main(String[] args) throws RemoteException, AlreadyBoundException {
 
-        Registry registry = LocateRegistry.createRegistry(6969);
-        registry.bind("Printers", new PrintService());
-//        Registry registry = LocateRegistry.createRegistry(PORT,
-//                new SslRMIClientSocketFactory(),
-//                new SslRMIServerSocketFactory());
-//        try {
-//            registry.bind("Printers", new PrintService());
-//        } catch (AlreadyBoundException e) {
-//            e.printStackTrace();
-//        }
+        //Registry registry = LocateRegistry.createRegistry(6969);
+
+        Registry registry = LocateRegistry.createRegistry(PORT,
+                new SslRMIClientSocketFactory(),
+                new SslRMIServerSocketFactory());
+        try {
+            registry.bind("Printers", new PrintService());
+        } catch (AlreadyBoundException e) {
+            e.printStackTrace();
+        }
+        //registry.bind("Printers", new PrintService());
+
     }
 
 
 
 
     PrintService() throws RemoteException {
+        super(PORT,new SslRMIClientSocketFactory(),new SslRMIServerSocketFactory());
+        setSSLSettings();
 
-        super(/*PORT,new SslRMIClientSocketFactory(),new SslRMIServerSocketFactory()*/);
 
         userList.put("Gammelsmoelf","hashedPass");
         userList.put("Gandalf","hashedPass");
         userList.put("Hackerman101","f119caf16702d1bac8620e9becb42dcbb98170810ab1ee02edfe29b81cb2d34ec4713446cdce165dc1c2240e97f086dee80e34588f78084beccdab53230a41b7");
+    }
+
+    private void setSSLSettings() {
+        String pass = "Gandalf";
+        System.setProperty("javax.net.ssl.debug","all");
+        System.setProperty("javax.net.ssl.keyStore","D:\\ssl\\ServerKeyStore.jks");
+        System.setProperty("javax.net.ssl.keyStorePassword",pass);
+        System.setProperty("javax.net.ssl.trustStore","D:\\ssl\\ServerTrustStore.jks");
+        System.setProperty("javax.net.ssl.trustStorePassword",pass);
+
     }
 
     @Override

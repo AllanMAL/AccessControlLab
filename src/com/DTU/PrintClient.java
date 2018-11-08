@@ -12,6 +12,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.security.Key;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -19,26 +20,24 @@ import java.security.NoSuchAlgorithmException;
 public class PrintClient implements Serializable {
     private static final int PORT = 6969;
 
-//    public class SecureClientSocket extends Object implements RMIClientSocketFactory {
-//
-//        @Override
-//        public Socket createSocket(String host, int port) throws IOException {
-//            return null;
-//        }
-//    }
-
     private static Printerface printer;
 
-    public static void main(String[] args) throws RemoteException, NotBoundException, MalformedURLException {
-        //Registry registry = LocateRegistry.getRegistry(InetAddress.getLocalHost().getHostName(), PORT,new SslRMIClientSocketFactory());
-        printer = (Printerface) Naming.lookup("rmi://localhost:6969/Printers");
-        //printer = (PrintService) registry.lookup("Printers");
-        //System.out.println("-- " + printer.echo("Hey Server"));
-
-
+    public static void main(String[] args) throws RemoteException, NotBoundException, UnknownHostException {
+        new PrintClient();
         login("Hackerman101","GandalfTheWhite1");
 
 
+        //printer = (Printerface) Naming.lookup("rmi://localhost:6969/Printers");
+
+        //System.out.println("-- " + printer.echo("Hey Server"));
+
+
+    }
+
+    public PrintClient() throws UnknownHostException, RemoteException, NotBoundException {
+        setSSLSettings();
+        Registry registry = LocateRegistry.getRegistry(InetAddress.getLocalHost().getHostName(), PORT,new SslRMIClientSocketFactory());
+        printer = (PrintService) registry.lookup("Printers");
     }
 
     static void print() throws RemoteException{
@@ -109,6 +108,14 @@ public class PrintClient implements Serializable {
         }
         // System.out.println(pass);
         return pass;
+    }
+    private static void setSSLSettings() {
+        String pass = "Gandalf";
+        System.setProperty("javax.net.ssl.debug", "all");
+        System.setProperty("javax.net.ssl.keyStore", "D:\\ssl\\ClientKeyStore.jks");
+        System.setProperty("javax.net.ssl.keyStorePassword", pass);
+        System.setProperty("javax.net.ssl.trustStore", "D:\\ssl\\ClientTrustStore.jks");
+        System.setProperty("javax.net.ssl.trustStorePassword", pass);
     }
 
 }
