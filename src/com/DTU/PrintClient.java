@@ -20,7 +20,7 @@ public class PrintClient {
 
     public static void main(String[] args) throws RemoteException, NotBoundException, UnknownHostException, MalformedURLException {
         new PrintClient();
-        createToken("Hackerman101","GandalfTheWhite2");
+        createToken("Hackerman101","GandalfTheWhite1");
         System.out.println(printer.echo(hashedPass,"Loopback test"));
 
         stop();
@@ -94,7 +94,7 @@ public class PrintClient {
         System.out.println("Username: "+username+" Password: "+password);
         hashedPass.put(1,username);
         hashedPass.put(2,hashAndSaltPass(password));
-        //System.out.println(printer.login(hashedPass));
+        //System.out.println(printer.verifyUser(hashedPass));
 
     }
 

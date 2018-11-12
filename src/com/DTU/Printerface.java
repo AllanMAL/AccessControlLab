@@ -17,6 +17,7 @@ public interface Printerface extends Remote,Serializable {
     String status(JSONObject hashedPass)throws RemoteException;  // prints status of printer on the user's display
     String readConfig(JSONObject hashedPass, String parameter)throws RemoteException;   // prints the value of the parameter on the user's display
     String setConfig(JSONObject hashedPass, String parameter, String value)throws RemoteException;   // sets the parameter to value
-    String login(JSONObject ident) throws RemoteException;
+    String verifyUser(JSONObject ident) throws RemoteException;
+    boolean verify(JSONObject token) throws RemoteException;
 
 }

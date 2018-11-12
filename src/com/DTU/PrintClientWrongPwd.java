@@ -94,7 +94,7 @@ public class PrintClientWrongPwd {
         System.out.println("Username: "+username+" Password: "+password);
         hashedPass.put(1,username);
         hashedPass.put(2,hashAndSaltPass(password));
-        //System.out.println(printer.login(hashedPass));
+        //System.out.println(printer.verifyUser(hashedPass));
 
     }
 
