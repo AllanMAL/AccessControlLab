@@ -1,0 +1,4 @@
+// Let anything through. UNSAFE!
+grant {
+        permission java.net.SocketPermission "*", "accept,resolve";
+};

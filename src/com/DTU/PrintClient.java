@@ -18,7 +18,7 @@ import java.security.NoSuchAlgorithmException;
 
 
 public class PrintClient implements Serializable {
-    private static final int PORT = 6969;
+    private static final int PORT = 12083;
 
     private static Printerface printer;
 
@@ -35,9 +35,9 @@ public class PrintClient implements Serializable {
     }
 
     public PrintClient() throws UnknownHostException, RemoteException, NotBoundException {
-        setSSLSettings();
+        //setSSLSettings();
         Registry registry = LocateRegistry.getRegistry(InetAddress.getLocalHost().getHostName(), PORT,new SslRMIClientSocketFactory());
-        printer = (PrintService) registry.lookup("Printers");
+        printer = (Printerface) registry.lookup("Printers");
     }
 
     static void print() throws RemoteException{

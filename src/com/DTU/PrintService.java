@@ -9,25 +9,30 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
-import static java.rmi.Naming.bind;
 
 public class PrintService extends UnicastRemoteObject implements Printerface {
 
     /* Global variables: */
     private boolean accessDenied = true;
     JSONObject userList = new JSONObject();
-    private static final int PORT = 6969;
+    private static final int PORT = 12083;
 
     /* psvm */
     public static void main(String[] args) throws RemoteException, AlreadyBoundException {
 
+
+        if (System.getSecurityManager() == null) {
+            System.setSecurityManager(new SecurityManager());
+        }
+
         //Registry registry = LocateRegistry.createRegistry(6969);
 
-        Registry registry = LocateRegistry.createRegistry(PORT,
-                new SslRMIClientSocketFactory(),
-                new SslRMIServerSocketFactory());
+
         try {
-            registry.bind("Printers", new PrintService());
+            Registry registry = LocateRegistry.createRegistry(PORT, new SslRMIClientSocketFactory(), new SslRMIServerSocketFactory());
+
+            PrintService printServer = new PrintService();
+            registry.bind("Printers", printServer);
         } catch (AlreadyBoundException e) {
             e.printStackTrace();
         }
@@ -40,7 +45,7 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
 
     PrintService() throws RemoteException {
         super(PORT,new SslRMIClientSocketFactory(),new SslRMIServerSocketFactory());
-        setSSLSettings();
+        //setSSLSettings();
 
 
         userList.put("Gammelsmoelf","hashedPass");
