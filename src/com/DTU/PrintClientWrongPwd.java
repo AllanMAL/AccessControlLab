@@ -12,23 +12,23 @@ import java.security.NoSuchAlgorithmException;
 import static java.rmi.Naming.lookup;
 
 
-public class PrintClient {
+public class PrintClientWrongPwd {
     private static final int PORT = 1245;
     static JSONObject hashedPass;
 
     private static Printerface printer;
 
     public static void main(String[] args) throws RemoteException, NotBoundException, UnknownHostException, MalformedURLException {
-        new PrintClient();
-        createToken("Hackerman101","GandalfTheWhite2");
-        System.out.println(printer.echo(hashedPass,"Loopback test"));
+        new PrintClientWrongPwd();
+        createToken("Hackerman101","AnyWrongPassword");
+        printer.echo(hashedPass,"Jaymes");
 
         stop();
         print();
         start();
         restart();
-        setConfig("Out of Magenta","false");
-        readConfig("Any Magenta left?");
+        setConfig("Jimmy","false");
+        readConfig("Jack");
 
 
 
@@ -40,7 +40,7 @@ public class PrintClient {
     }
 
 
-    public PrintClient() throws RemoteException, NotBoundException, MalformedURLException {
+    public PrintClientWrongPwd() throws RemoteException, NotBoundException, MalformedURLException {
 
         printer = (Printerface) lookup("rmi://localhost:6969/Printers");
 
@@ -99,7 +99,7 @@ public class PrintClient {
     }
 
     private static String hashAndSaltPass(String password){
-        String salt = "123123123123123123123123123123123123123123123123"; // Shortcut, should have been a variable salt
+        String salt = "123123123123123123123123123123123123123123123123"; // Shortcut, should have been a random salt
         String pass = null;
         try{
             MessageDigest md = MessageDigest.getInstance("SHA-512");
