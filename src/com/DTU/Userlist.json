@@ -1,0 +1,19 @@
+{"User roles": {
+  "Admin": {
+    "Alice": "HashedPass"
+  },
+  "Service Technician": {
+    "Bob": "HashedPass"
+  },
+  "Power user": {
+    "Cecilia": "HashedPass"
+  },
+  "User": {
+    "David": "HashedPass",
+    "Erica": "HashedPass",
+    "Fred": "HashedPass",
+    "George": "HashedPass"
+  }
+}
+}
+

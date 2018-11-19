@@ -1,7 +1,14 @@
 package com.DTU;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.rmi.AlreadyBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -16,7 +23,7 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
     private static final int PORT = 1245;
 
     /* psvm */
-    public static void main(String[] args) throws RemoteException, AlreadyBoundException {
+    public static void main(String[] args) throws IOException, AlreadyBoundException, ParseException {
 
 
         Registry registry = LocateRegistry.createRegistry(6969);
@@ -24,15 +31,22 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
 
     }
 
-
-    private PrintService() throws RemoteException {
+    private PrintService() throws IOException, ParseException {
         super(PORT);
 
         userList = new JSONObject();
-        userList.put("Gandalf","2f972eed9d08bca8020307da4d8d84fff052b6c15b49763e6351c84274ecb98f843a66d1ce41966899f3a5dc101cd60c804c203d94be2ab1ee4f89285e6867b5");
-        userList.put("Hackerman101","f119caf16702d1bac8620e9becb42dcbb98170810ab1ee02edfe29b81cb2d34ec4713446cdce165dc1c2240e97f086dee80e34588f78084beccdab53230a41b7");
+        userList.putAll(readFile("Userlist.json"));
+        //userList.put("Gandalf","2f972eed9d08bca8020307da4d8d84fff052b6c15b49763e6351c84274ecb98f843a66d1ce41966899f3a5dc101cd60c804c203d94be2ab1ee4f89285e6867b5");
+        //userList.put("Hackerman101","f119caf16702d1bac8620e9becb42dcbb98170810ab1ee02edfe29b81cb2d34ec4713446cdce165dc1c2240e97f086dee80e34588f78084beccdab53230a41b7");
     }
 
+    private JSONObject readFile(String filename) throws IOException, ParseException {
+
+        JSONParser parser = new JSONParser();
+        JSONObject obj = new JSONObject();
+        obj = (JSONObject) parser.parse(new FileReader(filename));
+        return obj;
+    }
 
     @Override
     public String echo(JSONObject ident, String input) {

@@ -1,0 +1,9 @@
+{"Policy"{
+	"Admin": ("print","queue","topQueue","start","stop","restart","status","readConfig","setConfig"),
+	"Service Technician": ("start","stop","restart", "status","readConfig","setConfig"),
+	"Power User": ("print","queue","topQueue","restart"),
+	"User": ("print","queue")
+	}
+}
+	
+	
