@@ -1,8 +1,6 @@
 {
   "Administrator": {
-    "Alice"
-    :
-    "6adfc74008129137e883ca3b0fcd68d5540e4d6f650aeb6acaf795d0f8bac3be20afcb8ed33594502fb10bad8cc55ed6c41ee72437e14174d76de7155f82923c"
+    "Alice": "6adfc74008129137e883ca3b0fcd68d5540e4d6f650aeb6acaf795d0f8bac3be20afcb8ed33594502fb10bad8cc55ed6c41ee72437e14174d76de7155f82923c"
   },
   "Service Technician": {
     "Bob": "e8fad386d09d0d32da8d4aae0cc0ac67d57342627d1daad34994e653781332123e407cdf3f41102d5fb229126724bdb8082fa3d0e4c6b6addedcf0f7753dc883"

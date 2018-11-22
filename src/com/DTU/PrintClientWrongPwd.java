@@ -18,7 +18,7 @@ public class PrintClientWrongPwd {
 
     private static Printerface printer;
 
-    public static void main(String[] args) throws RemoteException, NotBoundException, UnknownHostException, MalformedURLException {
+    public static void main(String[] args) throws RemoteException, NotBoundException, MalformedURLException {
         new PrintClientWrongPwd();
         createToken("Hackerman101","AnyWrongPassword");
         printer.echo(hashedPass,"Jaymes");

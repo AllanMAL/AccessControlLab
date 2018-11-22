@@ -37,11 +37,10 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
         super(PORT);
 
         userList = new JSONObject();
-        userList.putAll(readFile("C:\\Users\\Steve\\Dropbox\\DTU 2017-19\\02239 - Data Security\\AccessControlLab\\src\\com\\DTU\\Userlist_pt1.json"));
+        userList.putAll(readFile(".\\src\\com\\DTU\\Userlist_pt1.json"));
         //System.out.println(userList);
         policy = new JSONObject();
-        policy.putAll(readFile("C:\\Users\\Steve\\Dropbox\\DTU 2017-19\\02239 - Data Security\\AccessControlLab\\src\\com\\DTU\\Policy_pt1.json"));
-        System.out.println(policy.get("Alice"));
+        policy.putAll(readFile(".\\src\\com\\DTU\\Policy_pt1.json"));
 
         //TODO: Login system with "cookie" or other temporary server-supplied token.
         //userList.put("Hackerman101","f119caf16702d1bac8620e9becb42dcbb98170810ab1ee02edfe29b81cb2d34ec4713446cdce165dc1c2240e97f086dee80e34588f78084beccdab53230a41b7");
@@ -54,7 +53,6 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
         JSONObject obj;
         obj = (JSONObject) parser.parse(new FileReader(filename));
         return obj;
-        //TODO: Relative path
     }
 
     @Override
@@ -158,7 +156,7 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
     }
 
     @Override
-    public boolean verify(JSONObject token, String task) throws RemoteException {
+    public boolean verify(JSONObject token, String task) {
         boolean state = false;
         Object name = token.get(1);
         String hashedPass = hashAndSaltPass(token.get(2).toString());
@@ -182,8 +180,8 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
             md.update(salt.getBytes());
             byte[] bytes = md.digest(password.getBytes());
             StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < bytes.length; i++) {
-                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            for (byte aByte : bytes) {
+                sb.append(Integer.toString((aByte & 0xff) + 0x100, 16).substring(1));
             }
 
             pass = sb.toString();

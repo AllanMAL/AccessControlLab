@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AuthenticationLab2.iml" filepath="$PROJECT_DIR$/AuthenticationLab2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AccessControlLab.iml" filepath="$PROJECT_DIR$/AccessControlLab.iml" />
     </modules>
   </component>
 </project>

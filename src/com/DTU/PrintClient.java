@@ -16,7 +16,7 @@ public class PrintClient {
 
     private static Printerface printer;
 
-    public static void main(String[] args) throws RemoteException, NotBoundException, UnknownHostException, MalformedURLException {
+    public static void main(String[] args) throws RemoteException, NotBoundException, MalformedURLException {
         new PrintClient();
         createToken("Alice","Cooper");
         //System.out.println(printer.echo(userpass,"IT's ALIVE!"));
@@ -101,7 +101,7 @@ public class PrintClient {
         System.out.println(printer.echo(userpass,parameter));
     }
 
-    private static void createToken(String username, String password) throws RemoteException{
+    private static void createToken(String username, String password){
         userpass = new JSONObject();
         //System.out.println("Username: "+username+" Password: "+password);
         userpass.put(1,username);
