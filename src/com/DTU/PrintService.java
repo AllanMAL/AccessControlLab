@@ -157,7 +157,7 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
         userList = new JSONObject();
 
         try {
-            userList.putAll(readFile(".\\src\\com\\DTU\\Userlist_pt2.json"));
+            userList.putAll(readFile(".\\src\\com\\DTU\\Userlist_pt3.json"));
             policy.putAll(readFile(".\\src\\com\\DTU\\Policy_pt2.json"));
         } catch (IOException e) {
             e.printStackTrace();
@@ -201,7 +201,7 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
         catch (NoSuchAlgorithmException e){
             e.printStackTrace();
         }
-        //System.out.println("Hashed and salted password: "+pass);
+        System.out.println("Hashed and salted password: "+pass);
         return pass;
     }
 }

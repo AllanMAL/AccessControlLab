@@ -22,7 +22,7 @@ public class PrintClient {
 
         try {
             printer = (Printerface) lookup("rmi://localhost:1245/Printers");
-            createToken("Alice","Cooper");
+            createToken("Henry","Terminator");
 
         /*
         Current usernames and passwords:
@@ -33,6 +33,8 @@ public class PrintClient {
          Username: Erica    Password: AirWrecka
          Username: Fred     Password: Gandalf
          Username: George   Password: Weasley
+         Username: Henry    Password: Terminator
+         Username: Ida      Password: God
         */
 
             System.out.println(printer.echo(userpass,"IT's ALIVE!"));
