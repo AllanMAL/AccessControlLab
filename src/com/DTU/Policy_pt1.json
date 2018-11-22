@@ -1,0 +1,9 @@
+{
+"Alice": ["verifyUser","print","queue","topQueue","start","stop","restart","status","readConfig","setConfig"],
+"Bob": ["verifyUser","start","stop","restart", "status","readConfig","setConfig"],
+"Cecilia": ["verifyUser","print","queue","topQueue","restart"],
+"David": ["verifyUser","print","queue"],
+"Erica": ["verifyUser","print","queue"],
+"Fred": ["verifyUser","print","queue"],
+"George": ["verifyUser","print","queue"]
+}

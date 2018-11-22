@@ -1,0 +1,8 @@
+{
+	"Admin": ("verifyUser","print","queue","topQueue","start","stop","restart","status","readConfig","setConfig"),
+	"Service Technician": ("verifyUser","start","stop","restart", "status","readConfig","setConfig"),
+	"Power User": ("verifyUser","print","queue","topQueue","restart"),
+	"User": ("verifyUser","print","queue")
+}
+	
+	

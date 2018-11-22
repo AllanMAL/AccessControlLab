@@ -20,23 +20,38 @@ public class PrintClient {
 
     public static void main(String[] args) throws RemoteException, NotBoundException, UnknownHostException, MalformedURLException {
         new PrintClient();
-        createToken("Hackerman101","GandalfTheWhite1");
-        System.out.println(printer.echo(hashedPass,"Loopback test"));
-
-        stop();
+        createToken("Alice","Cooper");
+        //System.out.println(printer.echo(hashedPass,"IT's ALIVE!"));
         print();
-        start();
-        restart();
-        setConfig("Out of Magenta","false");
-        readConfig("Any Magenta left?");
+        // System.out.println(hashedPass);
+        status();
+
+        // Username: Alice Password: Cooper
+        // Username: Bob Password: Terminator
+        // Username: Cecilia Password: Simon & Garfunkel
+        // Username: David Password: Goliath
+        // Username: Erica Password: AirWrecka
+        // Username: Fred Password: Gandalf
+        // Username: George Password: Weasley
+        //
+        //        stop();
+        //        print();
+        //        start();
+        //        restart();
+        //        setConfig("Out of Magenta","false");
+        //        readConfig("Any Magenta left?");
 
 
 
 
 
-        //System.out.println("-- " + printer.echo("Hey Server"));
+        // System.out.println("-- " + printer.echo("Hey Server"));
 
 
+    }
+
+    public static void verifyUser() throws RemoteException {
+        System.out.println(printer.verifyUser(hashedPass));
     }
 
 
@@ -62,39 +77,38 @@ public class PrintClient {
 
     static void start() throws RemoteException{
         System.out.println(printer.start(hashedPass));
-
     }
 
     static void stop() throws RemoteException{
         System.out.println(printer.stop(hashedPass));
-
     }
 
     static void restart() throws RemoteException{
         System.out.println(printer.restart(hashedPass));
-
     }
 
     static void status() throws RemoteException{
         System.out.println(printer.status(hashedPass));
-
     }
 
     static void readConfig(String parameter) throws RemoteException{
         System.out.println(printer.readConfig(hashedPass,parameter));
-
     }
 
     static void setConfig(String parameter, String value) throws RemoteException{
         System.out.println(printer.setConfig(hashedPass,parameter,value));
-
     }
+
+    static void echo(String parameter) throws RemoteException{
+        System.out.println(printer.echo(hashedPass,parameter));
+    }
+
     private static void createToken(String username, String password) throws RemoteException{
         hashedPass = new JSONObject();
         System.out.println("Username: "+username+" Password: "+password);
         hashedPass.put(1,username);
         hashedPass.put(2,hashAndSaltPass(password));
-        //System.out.println(printer.verifyUser(hashedPass));
+        System.out.println(printer.verifyUser(hashedPass));
 
     }
 
@@ -117,14 +131,6 @@ public class PrintClient {
         }
         System.out.println("Hashed and salted password: "+pass);
         return pass;
-    }
-    private static void setSSLSettings() {
-        String pass = "Gandalf";
-        System.setProperty("javax.net.ssl.debug", "all");
-        System.setProperty("javax.net.ssl.keyStore", "D:\\ssl\\ClientKeyStore.jks");
-        System.setProperty("javax.net.ssl.keyStorePassword", pass);
-        System.setProperty("javax.net.ssl.trustStore", "D:\\ssl\\ClientTrustStore.jks");
-        System.setProperty("javax.net.ssl.trustStorePassword", pass);
     }
 
 }
