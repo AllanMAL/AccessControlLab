@@ -52,7 +52,7 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
         if(verify(ident,"echo")){
             return "You made me say " + input;
         }
-        return ("Action not allowed");
+        return ("echo: "+"Action not allowed");
     }
 
     @Override
@@ -61,25 +61,25 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
             System.out.println("Print requested. Filename: " + filename + " -- Printer: " + printer);
             return "Printing " + filename;
         }
-        return ("Action not allowed");
+        return ("print: "+"Action not allowed");
     }
 
     @Override
     public String queue(JSONObject ident) throws RemoteException {
         if(verify(ident,"queue")){
-            System.out.println("Get queued");
-            return "0 jobs in queued";
+            System.out.println("Get queue");
+            return "Queue: 999 jobs in queue";
         }
-        return ("Action not allowed");
+        return ("queue: "+"Action not allowed");
     }
 
     @Override
     public String topQueue(JSONObject ident, int job) throws RemoteException {
         if(verify(ident,"topQueue")){
             System.out.println("Priorities changed!");
-            return "Job "+job+" moved to top of queued";
+            return "Job "+job+" moved to top of queue";
         }
-        return ("Action not allowed");
+        return ("topQueue: "+"Action not allowed");
     }
 
     @Override
@@ -88,7 +88,7 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
             System.out.println("Server start");
             return "Starting print server";
         }
-        return ("Action not allowed");
+        return ("start: "+"Action not allowed");
     }
 
     @Override
@@ -97,7 +97,7 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
             System.out.println("Server stop");
             return "Stopping print server";
         }
-        return ("Action not allowed");
+        return ("stop: "+"Action not allowed");
     }
 
     @Override
@@ -106,16 +106,16 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
             System.out.println("restart");
             return "Restarting print server";
         }
-        return ("Action not allowed");
+        return ("restart: "+"Action not allowed");
     }
 
     @Override
     public String status(JSONObject ident) throws RemoteException {
         if(verify(ident,"status")){
             System.out.println("Status request");
-            return "It's all good.";
+            return "Status: It's all good.";
         }
-        return ("Action not allowed");
+        return ("Status: "+"Action not allowed");
     }
 
     @Override
@@ -124,7 +124,7 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
             System.out.println("Config get");
             return "Reading config "+parameter;
         }
-        return ("Action not allowed");
+        return ("readConfig: "+"Action not allowed");
     }
 
     @Override
@@ -133,7 +133,7 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
             System.out.println("Config set");
             return "Setting config "+parameter;
         }
-        return ("Action not allowed");
+        return ("setConfig: "+"Action not allowed");
     }
 
     @Override
@@ -144,7 +144,7 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
             return "Welcome to the printing system "+ident.get(1)+". \nAvailable commands: "+
                     policy.get(userData.get("Role"));
         }
-        return "Username or password incorrect";
+        return "verifyUser failed. "+"Username or password incorrect";
 
     }
 

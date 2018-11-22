@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e72d5ec5-e130-4956-abdf-228b311be2df" name="Default" comment="Updated code to use relative paths to policy and user files">
+    <list default="true" id="e72d5ec5-e130-4956-abdf-228b311be2df" name="Default" comment="Removed legacy file">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/DTU/PrintClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/DTU/PrintClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/DTU/PrintService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/DTU/PrintService.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,41 +31,41 @@
     <session id="-731442110">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.4" value="1" />
-          <entry key="project.open.time.7" value="2" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.open.time.7" value="3" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="iml" value="1" />
-          <entry key="java" value="3" />
-          <entry key="json" value="5" />
+          <entry key="java" value="5" />
+          <entry key="json" value="14" />
           <entry key="md" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="3" />
-          <entry key="JSON" value="5" />
+          <entry key="JAVA" value="5" />
+          <entry key="JSON" value="14" />
           <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="3045" />
-          <entry key="json" value="51" />
+          <entry key="java" value="4041" />
+          <entry key="json" value="110" />
           <entry key="md" value="17" />
-          <entry key="txt" value="173" />
+          <entry key="txt" value="226" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="3045" />
-          <entry key="JSON" value="51" />
-          <entry key="PLAIN_TEXT" value="190" />
+          <entry key="JAVA" value="4041" />
+          <entry key="JSON" value="110" />
+          <entry key="PLAIN_TEXT" value="243" />
         </counts>
       </usages-collector>
     </session>
@@ -73,8 +75,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/DTU/PrintService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="58" column="62" selection-start-line="58" selection-start-column="62" selection-end-line="58" selection-end-column="62" />
+            <state relative-caret-position="117">
+              <caret line="135" column="52" lean-forward="true" selection-start-line="49" selection-start-column="4" selection-end-line="135" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -83,28 +85,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/DTU/Policy_pt2.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/DTU/Userlist_pt2.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="4" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/DTU/PrintClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
-              <caret line="104" column="36" lean-forward="true" selection-start-line="104" selection-start-column="36" selection-end-line="104" selection-end-column="36" />
+            <state relative-caret-position="66">
+              <caret line="78" lean-forward="true" selection-start-line="78" selection-end-line="78" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -116,7 +100,7 @@
         <entry file="file://$PROJECT_DIR$/src/com/DTU/Printerface.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="272">
-              <caret line="20" column="14" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
+              <caret line="22" column="14" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -153,10 +137,11 @@
         <option value="$PROJECT_DIR$/src/com/DTU/Userlist.json" />
         <option value="$PROJECT_DIR$/src/com/DTU/Printerface.java" />
         <option value="$PROJECT_DIR$/src/com/DTU/Policy_pt2.json" />
-        <option value="$PROJECT_DIR$/src/com/DTU/PrintClient.java" />
         <option value="$PROJECT_DIR$/src/com/DTU/PrintClientWrongPwd.java" />
-        <option value="$PROJECT_DIR$/src/com/DTU/PrintService.java" />
         <option value="$PROJECT_DIR$/src/com/DTU/Userlist_pt2.json" />
+        <option value="$PROJECT_DIR$/src/com/DTU/Userlist_pt1.json" />
+        <option value="$PROJECT_DIR$/src/com/DTU/PrintService.java" />
+        <option value="$PROJECT_DIR$/src/com/DTU/PrintClient.java" />
       </list>
     </option>
   </component>
@@ -170,8 +155,8 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="364" />
-    <option name="y" value="59" />
+    <option name="x" value="45" />
+    <option name="y" value="-15" />
     <option name="width" value="977" />
     <option name="height" value="788" />
   </component>
@@ -181,7 +166,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -204,19 +189,25 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542881600328" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/AccessControlLab_prototype_1.zip" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542897115985" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Steve\Dropbox\DTU 2017-19\02239 - Data Security\AccessControlLab\src\com\DTU" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Steve\Dropbox\DTU 2017-19\02239 - Data Security\AccessControlLab\src\com\DTU" />
     </key>
@@ -233,7 +224,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.PrintService">
+  <component name="RunManager" selected="Application.PrintClient">
     <configuration name="PrintClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.DTU.PrintClient" />
       <module name="AccessControlLab" />
@@ -364,7 +355,28 @@
       <option name="project" value="LOCAL" />
       <updated>1542881467103</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Removed legacy file">
+      <created>1542881683862</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1542881683862</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Done for now">
+      <created>1542886630782</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1542886630782</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Updated all the things">
+      <created>1542894560478</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1542894560478</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -381,8 +393,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-8" width="1320" height="784" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16269842" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16507937" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -391,15 +404,15 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32872504" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49920633" weight="0.33486944" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4984127" visible="true" weight="0.48079878" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32872504" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50079364" side_tool="true" visible="true" weight="0.32872504" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="10" sideWeight="0.49920633" visible="true" weight="0.32872504" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32872504" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50158733" side_tool="true" weight="0.33486944" />
+      <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49920633" weight="0.32872504" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32872504" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -428,7 +441,10 @@
     <MESSAGE value="I refuse!" />
     <MESSAGE value="Moved hashing to PrintService instead of PrintClient." />
     <MESSAGE value="Updated code to use relative paths to policy and user files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated code to use relative paths to policy and user files" />
+    <MESSAGE value="Removed legacy file" />
+    <MESSAGE value="Done for now" />
+    <MESSAGE value="Updated all the things" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated all the things" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/README.md">
@@ -446,39 +462,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/DTU/PrintClientWrongPwd.java" />
     <entry file="file://$PROJECT_DIR$/src/com/DTU/Printerface.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
-          <caret line="20" column="14" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
+          <caret line="22" column="14" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/DTU/Userlist_pt1.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/DTU/Policy_pt1.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/DTU/PrintClientWrongPwd.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="91" column="88" lean-forward="true" selection-start-line="91" selection-start-column="88" selection-end-line="91" selection-end-column="92" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/DTU/Userlist_pt2.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="4" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -489,10 +483,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/DTU/Policy_pt1.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/DTU/Userlist_pt1.old.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/DTU/Userlist_pt2.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="24" selection-end-line="24" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/DTU/Userlist_pt1.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="19" column="11" selection-start-line="19" selection-start-column="11" selection-end-line="19" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Salt/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/DTU/PrintClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="104" column="36" lean-forward="true" selection-start-line="104" selection-start-column="36" selection-end-line="104" selection-end-column="36" />
+        <state relative-caret-position="66">
+          <caret line="78" lean-forward="true" selection-start-line="78" selection-end-line="78" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -501,8 +526,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/DTU/PrintService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="58" column="62" selection-start-line="58" selection-start-column="62" selection-end-line="58" selection-end-column="62" />
+        <state relative-caret-position="117">
+          <caret line="135" column="52" lean-forward="true" selection-start-line="49" selection-start-column="4" selection-end-line="135" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
