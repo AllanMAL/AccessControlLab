@@ -1,19 +1,20 @@
-{"User roles": {
-  "Admin": {
-    "Alice": "HashedPass"
+{
+  "Administrator": {
+    "Alice"
+    :
+    "6adfc74008129137e883ca3b0fcd68d5540e4d6f650aeb6acaf795d0f8bac3be20afcb8ed33594502fb10bad8cc55ed6c41ee72437e14174d76de7155f82923c"
   },
   "Service Technician": {
-    "Bob": "HashedPass"
+    "Bob": "e8fad386d09d0d32da8d4aae0cc0ac67d57342627d1daad34994e653781332123e407cdf3f41102d5fb229126724bdb8082fa3d0e4c6b6addedcf0f7753dc883"
   },
   "Power user": {
-    "Cecilia": "HashedPass"
+    "Cecilia": "8e724f83ab8125600a41d35989b2a86f5f73a5a8ed506fc755ecf47ff52c96beb6c8f3f9986761252d882676fde74d80ef49e7a18f084d273be093a3cc92c77a"
   },
   "User": {
-    "David": "HashedPass",
-    "Erica": "HashedPass",
-    "Fred": "HashedPass",
-    "George": "HashedPass"
+    "David": "7d3287b787f7cd2e25f7b50cdbd2754692cce27a0dc68e112017b4038b7253b3cd40e020ad7069a87b900823f84215b7b851a47f7df103149a9fea02f03aae74",
+    "Erica": "ba2017765d1382c87438a6573707cb7e5ff9199ee07bf76e6fcc5925303e4b77b2a2f88ec7854b8ca2b3980df09940fa46b0b09476f5f186a47b2549ba7a81e9",
+    "Fred": "5e77487ec95c2b7144b61cbc10fb1f1e96164765691296da705e9c1d8d9c70fcf9d5ffba3b09421e341fe7a33484e5583aedb018e26e92919310c914d268f1d7",
+    "George": "987b03884f173fce99c979203ff4da3cfd0985520a04e5cb015d29d6cdfabe5dac23d2ed064334aed868e97c6e4e5fb1624fa01854d2cfd04f5fe7a217d06ba6"
   }
-}
 }
 

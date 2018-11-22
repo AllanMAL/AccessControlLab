@@ -13,6 +13,8 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 
 public class PrintService extends UnicastRemoteObject implements Printerface {
@@ -26,7 +28,7 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
     public static void main(String[] args) throws IOException, AlreadyBoundException, ParseException {
 
 
-        Registry registry = LocateRegistry.createRegistry(6969);
+        Registry registry = LocateRegistry.createRegistry(PORT);
         registry.bind("Printers", new PrintService());
 
     }
@@ -42,7 +44,6 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
         System.out.println(policy.get("Alice"));
 
         //TODO: Login system with "cookie" or other temporary server-supplied token.
-        //userList.put("Gandalf","2f972eed9d08bca8020307da4d8d84fff052b6c15b49763e6351c84274ecb98f843a66d1ce41966899f3a5dc101cd60c804c203d94be2ab1ee4f89285e6867b5");
         //userList.put("Hackerman101","f119caf16702d1bac8620e9becb42dcbb98170810ab1ee02edfe29b81cb2d34ec4713446cdce165dc1c2240e97f086dee80e34588f78084beccdab53230a41b7");
     }
 
@@ -65,10 +66,12 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
     }
 
     @Override
-    public void print(JSONObject ident, String filename, String printer) throws RemoteException {
+    public String print(JSONObject ident, String filename, String printer) throws RemoteException {
         if(verify(ident,"print")){
             System.out.println("Print requested. Filename: " + filename + " -- Printer: " + printer);
+            return "Printing " + filename;
         }
+        return ("Unregistered user");
     }
 
     @Override
@@ -158,12 +161,11 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
     public boolean verify(JSONObject token, String task) throws RemoteException {
         boolean state = false;
         Object name = token.get(1);
-        if(userList.containsKey(name) && userList.get(name).equals(token.get(2))){
+        String hashedPass = hashAndSaltPass(token.get(2).toString());
+        if(userList.containsKey(name) && userList.get(name).equals(hashedPass)){
             JSONArray commands = (JSONArray) policy.get(name);
             for (Object command : commands) {
-                System.out.println("Ping");
                 if (command.toString().equals(task)) {
-                    System.out.println("Success!");
                     state = true;
                     return state;
 
@@ -172,5 +174,24 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
         }
         return state;
     }
+    private static String hashAndSaltPass(String password){
+        String salt = "123123123123123123123123123123123123123123123123"; // Shortcut, should have been a variable salt
+        String pass = null;
+        try{
+            MessageDigest md = MessageDigest.getInstance("SHA-512");
+            md.update(salt.getBytes());
+            byte[] bytes = md.digest(password.getBytes());
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < bytes.length; i++) {
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
 
+            pass = sb.toString();
+        }
+        catch (NoSuchAlgorithmException e){
+            e.printStackTrace();
+        }
+        //System.out.println("Hashed and salted password: "+pass);
+        return pass;
+    }
 }
