@@ -1,7 +1,9 @@
 package com.DTU;
 
 import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
@@ -18,6 +20,6 @@ public interface Printerface extends Remote,Serializable {
     String readConfig(JSONObject hashedPass, String parameter)throws RemoteException;   // prints the value of the parameter on the user's display
     String setConfig(JSONObject hashedPass, String parameter, String value)throws RemoteException;   // sets the parameter to value
     String verifyUser(JSONObject ident) throws RemoteException;
-    boolean verify(JSONObject token, String task) throws RemoteException;
+    boolean verify(JSONObject token, String task) throws IOException, ParseException;
 
 }

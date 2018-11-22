@@ -22,7 +22,7 @@ public class PrintClient {
 
         try {
             printer = (Printerface) lookup("rmi://localhost:1245/Printers");
-            createToken("Alice","Cooper");
+            createToken("Bob","Terminator");
 
         /*
         Current usernames and passwords:

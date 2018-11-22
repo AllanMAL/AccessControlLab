@@ -34,12 +34,6 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
     private PrintService() throws IOException, ParseException {
         super(PORT);
 
-        userList = new JSONObject();
-        userList.putAll(readFile(".\\src\\com\\DTU\\Userlist_pt2.json"));
-        //System.out.println(userList);
-        policy = new JSONObject();
-        policy.putAll(readFile(".\\src\\com\\DTU\\Policy_pt2.json"));
-
         //TODO: Login system with "cookie" or other temporary server-supplied token.
         //userList.put("Hackerman101","f119caf16702d1bac8620e9becb42dcbb98170810ab1ee02edfe29b81cb2d34ec4713446cdce165dc1c2240e97f086dee80e34588f78084beccdab53230a41b7");
     }
@@ -147,7 +141,7 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
          if(verify(ident,"verifyUser")){
             System.out.println("User "+ident.get(1)+" logged in");
              JSONObject userData = (JSONObject) userList.get(ident.get(1));
-            return "Welcome to the printing system. Available commands: \n"+
+            return "Welcome to the printing system "+ident.get(1)+". \nAvailable commands: "+
                     policy.get(userData.get("Role"));
         }
         return "Username or password incorrect";
@@ -159,7 +153,18 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
         boolean state = false;
         Object name = token.get(1);
 
-        String hashedPass = hashAndSaltPass(token.get(2).toString());
+        policy = new JSONObject();
+        userList = new JSONObject();
+
+        try {
+            userList.putAll(readFile(".\\src\\com\\DTU\\Userlist_pt2.json"));
+            policy.putAll(readFile(".\\src\\com\\DTU\\Policy_pt2.json"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        String hashedPass = hashAndSaltPass(token);
         if (userList.containsKey(name)) {
             JSONObject userData = (JSONObject) userList.get(name);
             if (userData.get("Password").equals(hashedPass)) {
@@ -174,15 +179,18 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
             }
         }
         return state;
+
     }
 
-    private static String hashAndSaltPass(String password){
-        String salt = "123123123123123123123123123123123123123123123123"; // Shortcut, should have been a variable salt
+    private static String hashAndSaltPass(JSONObject token){
+        JSONObject userData = (JSONObject) userList.get(token.get(1));
+        //System.out.println(userData.get("Salt"));
+        String salt = userData.get("Salt").toString();
         String pass = null;
         try{
             MessageDigest md = MessageDigest.getInstance("SHA-512");
             md.update(salt.getBytes());
-            byte[] bytes = md.digest(password.getBytes());
+            byte[] bytes = md.digest(token.get(2).toString().getBytes());
             StringBuilder sb = new StringBuilder();
             for (byte aByte : bytes) {
                 sb.append(Integer.toString((aByte & 0xff) + 0x100, 16).substring(1));
