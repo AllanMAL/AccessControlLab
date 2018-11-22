@@ -52,7 +52,7 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
         if(verify(ident,"echo")){
             return "You made me say " + input;
         }
-        return ("Action not allowed");
+        return ("echo: "+"Action not allowed");
     }
 
     @Override
@@ -61,25 +61,25 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
             System.out.println("Print requested. Filename: " + filename + " -- Printer: " + printer);
             return "Printing " + filename;
         }
-        return ("Action not allowed");
+        return ("print: "+"Action not allowed");
     }
 
     @Override
     public String queue(JSONObject ident) throws RemoteException {
         if(verify(ident,"queue")){
-            System.out.println("Get queued");
-            return "0 jobs in queued";
+            System.out.println("Get queue");
+            return "Queue: 999 jobs in queue";
         }
-        return ("Action not allowed");
+        return ("queue: "+"Action not allowed");
     }
 
     @Override
     public String topQueue(JSONObject ident, int job) throws RemoteException {
         if(verify(ident,"topQueue")){
             System.out.println("Priorities changed!");
-            return "Job "+job+" moved to top of queued";
+            return "Job "+job+" moved to top of queue";
         }
-        return ("Action not allowed");
+        return ("topQueue: "+"Action not allowed");
     }
 
     @Override
@@ -88,7 +88,7 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
             System.out.println("Server start");
             return "Starting print server";
         }
-        return ("Action not allowed");
+        return ("start: "+"Action not allowed");
     }
 
     @Override
@@ -97,7 +97,7 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
             System.out.println("Server stop");
             return "Stopping print server";
         }
-        return ("Action not allowed");
+        return ("stop: "+"Action not allowed");
     }
 
     @Override
@@ -106,16 +106,16 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
             System.out.println("restart");
             return "Restarting print server";
         }
-        return ("Action not allowed");
+        return ("restart: "+"Action not allowed");
     }
 
     @Override
     public String status(JSONObject ident) throws RemoteException {
         if(verify(ident,"status")){
             System.out.println("Status request");
-            return "It's all good.";
+            return "Status: It's all good.";
         }
-        return ("Action not allowed");
+        return ("Status: "+"Action not allowed");
     }
 
     @Override
@@ -124,25 +124,25 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
             System.out.println("Config get");
             return "Reading config "+parameter;
         }
-        return ("Action not allowed");
+        return ("readConfig: "+"Action not allowed");
     }
 
     @Override
     public String setConfig(JSONObject ident, String parameter, String value) throws RemoteException {
-        if(verify(ident,"setConfig")){
+        if (verify(ident, "setConfig")) {
             System.out.println("Config set");
-            return "Setting config "+parameter;
+            return "Setting config " + parameter;
         }
-        return ("Action not allowed");
+        return ("setConfig: " + "Action not allowed");
     }
 
     @Override
     public String verifyUser(JSONObject ident) throws RemoteException {
          if(verify(ident,"verifyUser")){
-            System.out.println("User "+ident.get(1)+" logged in");
-             JSONObject userData = (JSONObject) userList.get(ident.get(1));
-            return "Welcome to the printing system "+ident.get(1)+". \nAvailable commands: "+
-                    policy.get(userData.get("Role"));
+            System.out.println("User "+ident.get("Username")+" logged in");
+             JSONObject userData = (JSONObject) userList.get(ident.get("Username"));
+            return "Welcome to the printing system "+ident.get("Username")+". \nAvailable commands: "+
+                    policy.get(ident.get("Username"));
         }
         return "Username or password incorrect";
 
@@ -151,14 +151,14 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
     @Override
     public boolean verify(JSONObject token, String task) {
         boolean state = false;
-        Object name = token.get(1);
+        Object name = token.get("Username");
 
         policy = new JSONObject();
         userList = new JSONObject();
 
         try {
-            userList.putAll(readFile(".\\src\\com\\DTU\\Userlist_pt2.json"));
-            policy.putAll(readFile(".\\src\\com\\DTU\\Policy_pt2.json"));
+            userList.putAll(readFile(".\\src\\com\\DTU\\Userlist_pt1.json"));
+            policy.putAll(readFile(".\\src\\com\\DTU\\Policy_pt1.json"));
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ParseException e) {
@@ -168,7 +168,7 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
         if (userList.containsKey(name)) {
             JSONObject userData = (JSONObject) userList.get(name);
             if (userData.get("Password").equals(hashedPass)) {
-                JSONArray commands = (JSONArray) policy.get(userData.get("Role"));
+                JSONArray commands = (JSONArray) policy.get(name);
                 for (Object command : commands) {
                     if (command.toString().equals(task)) {
                         state = true;
@@ -183,14 +183,14 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
     }
 
     private static String hashAndSaltPass(JSONObject token){
-        JSONObject userData = (JSONObject) userList.get(token.get(1));
+        JSONObject userData = (JSONObject) userList.get(token.get("Username"));
         //System.out.println(userData.get("Salt"));
         String salt = userData.get("Salt").toString();
         String pass = null;
         try{
             MessageDigest md = MessageDigest.getInstance("SHA-512");
             md.update(salt.getBytes());
-            byte[] bytes = md.digest(token.get(2).toString().getBytes());
+            byte[] bytes = md.digest(token.get("Password").toString().getBytes());
             StringBuilder sb = new StringBuilder();
             for (byte aByte : bytes) {
                 sb.append(Integer.toString((aByte & 0xff) + 0x100, 16).substring(1));
@@ -201,7 +201,7 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
         catch (NoSuchAlgorithmException e){
             e.printStackTrace();
         }
-        //System.out.println("Hashed and salted password: "+pass);
+        System.out.println("Password: "+token.get("Password")+"\nHashed and salted password: "+pass);
         return pass;
     }
 }

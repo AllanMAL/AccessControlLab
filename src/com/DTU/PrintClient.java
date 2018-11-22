@@ -22,7 +22,7 @@ public class PrintClient {
 
         try {
             printer = (Printerface) lookup("rmi://localhost:1245/Printers");
-            createToken("Bob","Terminator");
+            createToken("Alice","Cooper");
 
         /*
         Current usernames and passwords:
@@ -100,8 +100,8 @@ public class PrintClient {
     private static void createToken(String username, String password) throws RemoteException {
         userpass = new JSONObject();
         //System.out.println("Username: "+username+" Password: "+password);
-        userpass.put(1,username);
-        userpass.put(2,(password));
+        userpass.put("Username",username);
+        userpass.put("Password",password);
         System.out.println(printer.verifyUser(userpass));
 
     }
