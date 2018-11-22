@@ -157,8 +157,8 @@ public class PrintService extends UnicastRemoteObject implements Printerface {
         userList = new JSONObject();
 
         try {
-            userList.putAll(readFile(".\\src\\com\\DTU\\Userlist_pt1.json"));
-            policy.putAll(readFile(".\\src\\com\\DTU\\Policy_pt1.json"));
+            userList.putAll(readFile(".\\src\\com\\DTU\\Userlist_ACL_newUsers.json"));
+            policy.putAll(readFile(".\\src\\com\\DTU\\Policy_ACL_newUsers.json"));
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ParseException e) {
